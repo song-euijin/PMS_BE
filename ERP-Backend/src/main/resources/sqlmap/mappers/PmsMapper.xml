@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pms.service.impl.PmsMapper">
+
+	<resultMap id="pms" type="com.pms.service.PmsVO">
+	</resultMap>
+
+	<insert id="createProject" parameterType="pmsVO">
+		INSERT INTO TB_PROJECT
+			(	PROJECT_NAME,
+				PROJECT_DESCRIPTION,
+				PROJECT_START_DATE,
+				PROJECT_END_DATE,
+				PROJECT_INDEX,
+				REGISTRAR,
+				PROJECT_REG_DATE	)
+		VALUES
+			(	#{projectName},
+				#{projectDescription},
+				#{projectStartDate},
+				#{projectEndDate},
+				PROJECT_INDEX.NEXTVAL,
+				'admin',
+				sysdate				)
+	</insert>
+	
+	<select id="selectProjectList" resultMap="pms">
+		SELECT 
+			PROJECT_INDEX as projectIndex,
+			PROJECT_NAME as projectName,
+			PROJECT_DESCRIPTION as projectDescription,
+			PROJECT_START_DATE as projectStartDate,
+			PROJECT_END_DATE as projectEndDate
+		FROM TB_PROJECT
+		ORDER BY PROJECT_REG_DATE DESC
+	</select>
+	
+	<select id="selectProject" resultMap="pms" parameterType="pmsVO">
+		SELECT 
+			PROJECT_INDEX as projectIndex,
+			PROJECT_NAME as projectName,
+			PROJECT_DESCRIPTION as projectDescription,
+			PROJECT_START_DATE as projectStartDate,
+			PROJECT_END_DATE as projectEndDate
+		FROM 	TB_PROJECT
+		ORDER BY PROJECT_REG_DATE DESC
+		WHERE	PROJECT_INDEX = #{projectIndex} 
+	</select>
+	
+</mapper>	 
