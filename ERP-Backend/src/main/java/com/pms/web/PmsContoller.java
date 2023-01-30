@@ -22,7 +22,7 @@ public class PmsContoller {
 		return "test";
 	}
 	
-	//!!!!
+	//!!!!////
 	@RequestMapping(value = "/selectProjectList.do")
 	public List<PmsVO> selectProjectList() {
 		return PmsService.selectProjectList();
