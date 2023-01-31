@@ -1,4 +1,5 @@
-GitRepositoriesView.GitDirectories=
-GitRepositoriesView.GitDirectories.relative=
+GitRepositoriesView.GitDirectories=C\:\\Users\\syinet\\Documents\\GitHub\\PMS_BE\\.git;
+GitRepositoriesView.GitDirectories.relative=.git;
+RepositorySearchDialogSearchPath=C\:\\Users\\syinet\\Documents\\GitHub\\PMS_BE
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1
