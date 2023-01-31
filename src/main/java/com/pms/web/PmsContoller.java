@@ -26,7 +26,7 @@ public class PmsContoller {
 	public List<PmsVO> selectProjectList() {
 		return PmsService.selectProjectList();
 	}
-	
+	///
 	@RequestMapping(value = "/selectProject.do")
 	public PmsVO selectProjectList(PmsVO pmsvo) {
 		return PmsService.selectProject(pmsvo);
