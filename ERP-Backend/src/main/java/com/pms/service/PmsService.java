@@ -6,4 +6,5 @@ public interface PmsService {
 
 	void createProject(PmsVO pmsvo);
 	List<PmsVO> selectProjectList();
+	PmsVO selectProject(PmsVO pmsvo);
 }

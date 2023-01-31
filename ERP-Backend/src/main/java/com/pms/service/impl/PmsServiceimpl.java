@@ -25,4 +25,9 @@ public class PmsServiceimpl implements PmsService{
 		return PmsMapper.selectProjectList();
 	}
 
+	@Override
+	public PmsVO selectProject(PmsVO pmsvo) {
+		return PmsMapper.selectProject(pmsvo);
+	}
+
 }

@@ -11,4 +11,5 @@ public interface PmsMapper {
 
 	public void createProject(PmsVO pmsvo);
 	public List<PmsVO> selectProjectList();
+	public PmsVO selectProject(PmsVO pmsvo);
 }

@@ -21,10 +21,15 @@ public class PmsContoller {
 		PmsService.createProject(pmsvo);
 		return "test";
 	}
-	
-	//!!!!////
+	//!!!!!
 	@RequestMapping(value = "/selectProjectList.do")
 	public List<PmsVO> selectProjectList() {
 		return PmsService.selectProjectList();
 	}
+	
+	@RequestMapping(value = "/selectProject.do")
+	public PmsVO selectProjectList(PmsVO pmsvo) {
+		return PmsService.selectProject(pmsvo);
+	}
+	
 }

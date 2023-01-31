@@ -43,8 +43,8 @@
 			PROJECT_START_DATE as projectStartDate,
 			PROJECT_END_DATE as projectEndDate
 		FROM 	TB_PROJECT
-		ORDER BY PROJECT_REG_DATE DESC
 		WHERE	PROJECT_INDEX = #{projectIndex} 
+		ORDER BY PROJECT_REG_DATE DESC
 	</select>
 	
 </mapper>	 
