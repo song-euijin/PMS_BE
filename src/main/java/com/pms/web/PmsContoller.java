@@ -21,7 +21,7 @@ public class PmsContoller {
 		PmsService.createProject(pmsvo);
 		return "test";
 	}
-	//!!!!!
+	//!!!!!!!!!
 	@RequestMapping(value = "/selectProjectList.do")
 	public List<PmsVO> selectProjectList() {
 		return PmsService.selectProjectList();
@@ -30,6 +30,16 @@ public class PmsContoller {
 	@RequestMapping(value = "/selectProject.do")
 	public PmsVO selectProjectList(PmsVO pmsvo) {
 		return PmsService.selectProject(pmsvo);
+	}
+	
+	@RequestMapping(value = "/updateProject.do")
+	public PmsVO updateProject(PmsVO pmsvo) {
+		return PmsService.updateProject(pmsvo);
+	}
+	
+	@RequestMapping(value = "/deleteProject.do")
+	public void deleteProject(PmsVO pmsvo) {
+		 PmsService.deleteProject(pmsvo);
 	}
 	
 }

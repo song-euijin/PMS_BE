@@ -9,7 +9,9 @@ import egovframework.rte.psl.dataaccess.mapper.Mapper;
 @Mapper("PmsMapper")
 public interface PmsMapper {
 
-	public void createProject(PmsVO pmsvo);
-	public List<PmsVO> selectProjectList();
-	public PmsVO selectProject(PmsVO pmsvo);
+	void createProject(PmsVO pmsvo);
+	List<PmsVO> selectProjectList();
+	PmsVO selectProject(PmsVO pmsvo);
+	void updateProject(PmsVO pmsvo);
+	void deleteProject(PmsVO pmsvo);
 }

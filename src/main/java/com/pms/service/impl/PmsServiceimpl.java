@@ -30,4 +30,16 @@ public class PmsServiceimpl implements PmsService{
 		return PmsMapper.selectProject(pmsvo);
 	}
 
+	@Override
+	public PmsVO updateProject(PmsVO pmsvo) {
+		PmsMapper.updateProject(pmsvo);
+		return PmsMapper.selectProject(pmsvo);
+	}
+
+	@Override
+	public void deleteProject(PmsVO pmsvo) {
+		PmsMapper.deleteProject(pmsvo);
+		
+	}
+
 }

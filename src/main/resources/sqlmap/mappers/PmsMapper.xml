@@ -47,4 +47,16 @@
 		ORDER BY PROJECT_REG_DATE DESC
 	</select>
 	
+	<update id="updateProject"  parameterType="pmsVO">
+		UPDATE 	TB_PROJECT
+		SET		PROJECT_DESCRIPTION = #{projectDescription} 		
+		WHERE	PROJECT_INDEX = #{projectIndex} 
+	</update>
+	
+	<delete id="deleteProject"  parameterType="pmsVO">
+		DELETE
+		FROM TB_PROJECT		
+		WHERE	PROJECT_INDEX = #{projectIndex} 
+	</delete>
+	
 </mapper>	 
