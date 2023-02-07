@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pms.service.PmsVO;
+import com.pms.service.UserVO;
 import com.pms.service.PmsService;
 
 @RestController
@@ -40,6 +41,11 @@ public class PmsContoller {
 	@RequestMapping(value = "/deleteProject.do")
 	public void deleteProject(PmsVO pmsvo) {
 		 PmsService.deleteProject(pmsvo);
+	}
+	
+	@RequestMapping(value = "/selectUserList.do")
+	public List<UserVO> selectUserList(PmsVO pmsvo) {
+		 return PmsService.selectUserList(pmsvo);
 	}
 	
 }

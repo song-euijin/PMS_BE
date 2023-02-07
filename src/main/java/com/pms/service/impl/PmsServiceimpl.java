@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.pms.service.PmsService;
 import com.pms.service.PmsVO;
+import com.pms.service.UserVO;
 
 @Service("PmsService")
 public class PmsServiceimpl implements PmsService{
@@ -40,6 +41,11 @@ public class PmsServiceimpl implements PmsService{
 	public void deleteProject(PmsVO pmsvo) {
 		PmsMapper.deleteProject(pmsvo);
 		
+	}
+
+	@Override
+	public List<UserVO> selectUserList(PmsVO pmsvo) {
+		return PmsMapper.selectUserList(pmsvo);
 	}
 
 }

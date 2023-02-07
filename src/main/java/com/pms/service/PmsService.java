@@ -9,4 +9,5 @@ public interface PmsService {
 	PmsVO selectProject(PmsVO pmsvo);
 	PmsVO updateProject(PmsVO pmsvo);
 	void deleteProject(PmsVO pmsvo);
+	List<UserVO> selectUserList(PmsVO pmsvo);
 }

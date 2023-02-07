@@ -4,6 +4,27 @@
 
 	<resultMap id="pms" type="com.pms.service.PmsVO">
 	</resultMap>
+	
+	<resultMap id="UserResultMap" type="com.pms.service.UserVO">
+		<result property="userId" 			column="USER_ID"/>
+		<result property="userPw" 			column="USER_PW"/>
+		<result property="userFirstName" 	column="USER_FIRST_NAME"/>
+		<result property="userLastName" 	column="USER_LAST_NAME"/>
+		<result property="userDept" 		column="FK_COMMON_CODE_DEPT"/>
+		<result property="userRank" 		column="FK_COMMON_CODE_RANK"/>
+		<result property="userPosition" 	column="FK_COMMON_CODE_POSITION"/>
+		<result property="userStatus" 		column="FK_COMMON_CODE_STATUS"/>
+		<result property="userPhone" 		column="USER_PHONE"/>
+		<result property="userZipCode"		column="USER_ZIP_CODE"/>
+		<result property="userAddr"			column="USER_ADDR"/>
+		<result property="userAddrDetail"	column="USER_ADDR_DETAIL"/>
+	</resultMap>
+	
+	<select id="selectUserList" resultMap="UserResultMap" >
+		SELECT *
+		FROM
+	    TB_USER
+	</select>
 
 	<insert id="createProject" parameterType="pmsVO">
 		INSERT INTO TB_PROJECT
@@ -26,22 +47,22 @@
 	
 	<select id="selectProjectList" resultMap="pms">
 		SELECT 
-			PROJECT_INDEX as projectIndex,
-			PROJECT_NAME as projectName,
-			PROJECT_DESCRIPTION as projectDescription,
-			PROJECT_START_DATE as projectStartDate,
-			PROJECT_END_DATE as projectEndDate
-		FROM TB_PROJECT
-		ORDER BY PROJECT_REG_DATE DESC
+				PROJECT_INDEX as projectIndex,
+				PROJECT_NAME as projectName,
+				PROJECT_DESCRIPTION as projectDescription,
+				PROJECT_START_DATE as projectStartDate,
+				PROJECT_END_DATE as projectEndDate
+		FROM 	TB_PROJECT
+		ORDER 	BY PROJECT_REG_DATE DESC
 	</select>
 	
 	<select id="selectProject" resultMap="pms" parameterType="pmsVO">
 		SELECT 
-			PROJECT_INDEX as projectIndex,
-			PROJECT_NAME as projectName,
-			PROJECT_DESCRIPTION as projectDescription,
-			PROJECT_START_DATE as projectStartDate,
-			PROJECT_END_DATE as projectEndDate
+				PROJECT_INDEX as projectIndex,
+				PROJECT_NAME as projectName,
+				PROJECT_DESCRIPTION as projectDescription,
+				PROJECT_START_DATE as projectStartDate,
+				PROJECT_END_DATE as projectEndDate
 		FROM 	TB_PROJECT
 		WHERE	PROJECT_INDEX = #{projectIndex} 
 		ORDER BY PROJECT_REG_DATE DESC
@@ -55,7 +76,7 @@
 	
 	<delete id="deleteProject"  parameterType="pmsVO">
 		DELETE
-		FROM TB_PROJECT		
+		FROM 	TB_PROJECT		
 		WHERE	PROJECT_INDEX = #{projectIndex} 
 	</delete>
 	
