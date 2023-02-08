@@ -10,4 +10,8 @@ public interface PmsService {
 	PmsVO updateProject(PmsVO pmsvo);
 	void deleteProject(PmsVO pmsvo);
 	List<UserVO> selectUserList(PmsVO pmsvo);
+	List<CodeVO> getDeptList();
+	List<CodeVO> getDeptInfo(String commonCode);
+	List<CodeVO> getUserInfo(String userDept);
+	List<UserVO> projectUserList(PmsVO pmsvo);
 }

@@ -20,10 +20,26 @@
 		<result property="userAddrDetail"	column="USER_ADDR_DETAIL"/>
 	</resultMap>
 	
+	<resultMap id="CodeResultMap" type="com.pms.service.CodeVO">
+		<result property="commonCode" 			column="COMMON_CODE"/>
+		<result property="upperCommonCode" 		column="UPPER_COMMON_CODE"/>
+		<result property="codeName" 			column="CODE_NAME"/>
+		<result property="codeDescription" 		column="CODE_DESCRIPTION"/>
+	</resultMap>
+	
 	<select id="selectUserList" resultMap="UserResultMap" >
 		SELECT *
 		FROM
 	    TB_USER
+	</select>
+	
+	<select id="projectUserList" resultMap="UserResultMap" parameterType="pmsVO" >
+		SELECT TU.USER_FIRST_NAME || TU.USER_LAST_NAME  || '[' || TCC.CODE_NAME || ']' as USER_FIRST_NAME,
+			   TU.USER_ID
+		FROM TB_PROJECT_USER_MAPPING TPUM 
+			LEFT OUTER JOIN TB_USER TU ON TPUM.FK_USER_ID = TU.USER_ID
+			LEFT OUTER JOIN TB_COMMON_CODE TCC ON TU.FK_COMMON_CODE_DEPT = TCC.COMMON_CODE
+		WHERE TPUM.FK_PROJECT_INDEX = #{projectIndex} AND TPUM.FK_COMMON_CODE ='Z0000'
 	</select>
 
 	<insert id="createProject" parameterType="pmsVO">
@@ -79,5 +95,61 @@
 		FROM 	TB_PROJECT		
 		WHERE	PROJECT_INDEX = #{projectIndex} 
 	</delete>
+	
+	
+	
+	
+	<select id="getDeptList" resultMap="CodeResultMap" >
+		-- 부서 조회
+		SELECT
+		    COMMON_CODE,
+		    CODE_NAME
+		FROM
+		    TB_COMMON_CODE
+		WHERE
+		    UPPER_COMMON_CODE = 'D00'
+	</select>
+	
+	<select id="getDeptInfo" resultMap="CodeResultMap" >
+		-- 부서상세(부서) 조회
+		SELECT
+		    COMMON_CODE,
+		    CODE_NAME
+		FROM
+		    TB_COMMON_CODE
+		WHERE
+		    COMMON_CODE = #{commonCode}
+	</select>
+	
+	<select id="getUserInfo" resultMap="UserResultMap" >
+		-- 부서상세(사원) 조회
+		SELECT
+			u.USER_FIRST_NAME || u.USER_LAST_NAME || '[' || cd.CODE_NAME || ']' as USER_FIRST_NAME,
+			u.USER_NAME,
+			u.USER_ID,
+			u.USER_IMG,
+			cd.CODE_NAME FK_COMMON_CODE_DEPT,
+			cr.CODE_NAME FK_COMMON_CODE_RANK,
+			cp.CODE_NAME FK_COMMON_CODE_POSITION,
+			ca.CODE_NAME FK_COMMON_CODE_AUTHORITY,
+			cs.CODE_NAME FK_COMMON_CODE_STATUS,
+			u.USER_PHONE,
+			u.USER_LANDLINE_NUMBER,
+			u.USER_ADDR,
+			u.USER_ADDR_DETAIL
+		FROM
+			TB_USER u
+		JOIN TB_COMMON_CODE cd
+		ON u.FK_COMMON_CODE_DEPT = cd.COMMON_CODE
+		JOIN TB_COMMON_CODE cr
+		ON u.FK_COMMON_CODE_RANK = cr.COMMON_CODE
+		JOIN TB_COMMON_CODE cp
+		ON u.FK_COMMON_CODE_POSITION = cp.COMMON_CODE
+		JOIN TB_COMMON_CODE ca
+		ON u.FK_COMMON_CODE_AUTHORITY = ca.COMMON_CODE
+		JOIN TB_COMMON_CODE cs
+		ON u.FK_COMMON_CODE_STATUS = cs.COMMON_CODE
+		WHERE FK_COMMON_CODE_DEPT = #{userDept}
+	</select>
 	
 </mapper>	 

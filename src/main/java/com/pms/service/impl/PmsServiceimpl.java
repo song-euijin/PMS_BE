@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.pms.service.CodeVO;
 import com.pms.service.PmsService;
 import com.pms.service.PmsVO;
 import com.pms.service.UserVO;
@@ -46,6 +47,27 @@ public class PmsServiceimpl implements PmsService{
 	@Override
 	public List<UserVO> selectUserList(PmsVO pmsvo) {
 		return PmsMapper.selectUserList(pmsvo);
+	}
+
+	@Override
+	public List<CodeVO> getDeptList() {
+		return PmsMapper.getDeptList();
+	}
+
+	@Override
+	public List<CodeVO> getDeptInfo(String commonCode) {
+		return PmsMapper.getDeptInfo(commonCode);
+	}
+
+	@Override
+	public List<CodeVO> getUserInfo(String userDept) {
+		List<CodeVO> userList = PmsMapper.getUserInfo(userDept);
+		return userList;
+	}
+
+	@Override
+	public List<UserVO> projectUserList(PmsVO pmsvo) {
+		return PmsMapper.projectUserList(pmsvo);
 	}
 
 }
