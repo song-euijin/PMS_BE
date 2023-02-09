@@ -55,6 +55,16 @@ public class PmsContoller {
 		 return PmsService.projectUserList(pmsvo);
 	}
 	
+	@RequestMapping(value = "/insertProjectMangerUser.do")
+	public void insertProjectMangerUser(List<UserVO> uservo , PmsVO pmsvo) {
+		 PmsService.insertProjectMangerUser(uservo,pmsvo);
+	}
+	
+	@RequestMapping(value = "/insertProjectParticipantUser.do")
+	public void insertProjectParticipantUser(List<UserVO> uservo, PmsVO pmsvo) {
+		 PmsService.insertProjectParticipantUser(uservo,pmsvo);
+	}
+	
 	
 	
 	// 부서 목록 조회

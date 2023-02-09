@@ -5,6 +5,7 @@ public class UserVO {
 	private String userPw;
 	private String userFirstName;
 	private String userLastName;
+	private String userName;
 	private String userDept;
 	private String userRank;
 	private String userPosition;
@@ -95,6 +96,12 @@ public class UserVO {
 		targetId = userId;
 	}
 	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	@Override
 	public String toString() {
 		return "UserVO [userId=" + userId + ", userPw=" + userPw + ", userFirstName=" + userFirstName

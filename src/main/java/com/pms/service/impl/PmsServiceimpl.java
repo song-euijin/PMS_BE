@@ -1,6 +1,8 @@
 package com.pms.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -69,5 +71,20 @@ public class PmsServiceimpl implements PmsService{
 	public List<UserVO> projectUserList(PmsVO pmsvo) {
 		return PmsMapper.projectUserList(pmsvo);
 	}
+
+	@Override
+	public void insertProjectMangerUser(List<UserVO> uservo, PmsVO pmsvo) {
+		
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertProjectParticipantUser(List<UserVO> uservo, PmsVO pmsvo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }

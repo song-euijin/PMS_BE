@@ -8,6 +8,7 @@
 	<resultMap id="UserResultMap" type="com.pms.service.UserVO">
 		<result property="userId" 			column="USER_ID"/>
 		<result property="userPw" 			column="USER_PW"/>
+		<result property="userName" 		column="USER_NAME"/>
 		<result property="userFirstName" 	column="USER_FIRST_NAME"/>
 		<result property="userLastName" 	column="USER_LAST_NAME"/>
 		<result property="userDept" 		column="FK_COMMON_CODE_DEPT"/>
@@ -35,11 +36,21 @@
 	
 	<select id="projectUserList" resultMap="UserResultMap" parameterType="pmsVO" >
 		SELECT TU.USER_FIRST_NAME || TU.USER_LAST_NAME  || '[' || TCC.CODE_NAME || ']' as USER_FIRST_NAME,
+			   TU.USER_FIRST_NAME || TU.USER_LAST_NAME  || '[' || TCC.CODE_NAME || ']' as USER_NAME,
 			   TU.USER_ID
 		FROM TB_PROJECT_USER_MAPPING TPUM 
 			LEFT OUTER JOIN TB_USER TU ON TPUM.FK_USER_ID = TU.USER_ID
 			LEFT OUTER JOIN TB_COMMON_CODE TCC ON TU.FK_COMMON_CODE_DEPT = TCC.COMMON_CODE
 		WHERE TPUM.FK_PROJECT_INDEX = #{projectIndex} AND TPUM.FK_COMMON_CODE ='Z0000'
+	</select>
+	<select id="projectUserList2" resultMap="UserResultMap" parameterType="pmsVO" >
+		SELECT TU.USER_FIRST_NAME || TU.USER_LAST_NAME  || '[' || TCC.CODE_NAME || ']' as USER_FIRST_NAME,
+			   TU.USER_FIRST_NAME || TU.USER_LAST_NAME  || '[' || TCC.CODE_NAME || ']' as USER_NAME,
+			   TU.USER_ID
+		FROM TB_PROJECT_USER_MAPPING TPUM 
+			LEFT OUTER JOIN TB_USER TU ON TPUM.FK_USER_ID = TU.USER_ID
+			LEFT OUTER JOIN TB_COMMON_CODE TCC ON TU.FK_COMMON_CODE_DEPT = TCC.COMMON_CODE
+		WHERE TPUM.FK_PROJECT_INDEX = #{projectIndex} AND TPUM.FK_COMMON_CODE ='Z0001'
 	</select>
 
 	<insert id="createProject" parameterType="pmsVO">
@@ -95,9 +106,6 @@
 		FROM 	TB_PROJECT		
 		WHERE	PROJECT_INDEX = #{projectIndex} 
 	</delete>
-	
-	
-	
 	
 	<select id="getDeptList" resultMap="CodeResultMap" >
 		-- 부서 조회

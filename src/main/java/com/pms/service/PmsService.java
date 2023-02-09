@@ -13,5 +13,8 @@ public interface PmsService {
 	List<CodeVO> getDeptList();
 	List<CodeVO> getDeptInfo(String commonCode);
 	List<CodeVO> getUserInfo(String userDept);
-	List<UserVO> projectUserList(PmsVO pmsvo);
+	List<UserVO> projectUserList(PmsVO pmsvo);;
+	void insertProjectMangerUser(List<UserVO> uservo, PmsVO pmsvo);
+	void insertProjectParticipantUser(List<UserVO> uservo, PmsVO pmsvo);
+
 }
